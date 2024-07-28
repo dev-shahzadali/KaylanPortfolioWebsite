@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="projects">
+    <h2>Projects</h2>
+    <ul>
+        <li><a href="{% url 'projects' %}"
+                class="list {% if '/projects/' == request.path %}projectnavlist{% endif %}">All</a></li>
+        {% for category in links%}
+        <li><a href="{{category.get_url}}"
+                class="list {% if request.path == category.get_url %}projectnavlist{% endif %}">{{category.category_name}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+    <div class="card-container" id="card-container">
+        {% for project in projects %}
+        <div class="card-wrap" data-url="{{ project.get_url }}">
+            <div class="card">
+                <div class="card-bg"
+                    style="background-image: url('{{ project.project_image.url }}');">
+                </div>
+                <div class="card-info">
+                    <h1>{{project.title}}</h1>
+                    <p>{{project.description}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        {% if projects.has_other_pages %}
+        <ul class="page">
+            {% if projects.has_previous %}
+            <li><a href="?page={{projects.previous_page_number}}">Previous</a></li>
+            {% else %}
+            <li><a class="disabled">Previous</a></li>
+            {% endif %}
+
+            {% if projects.has_next %}
+            <li><a href="?page={{projects.next_page_number}}">Next</a>
+            </li>
+            {% else %}
+            <li><a class="disabled">Next</a></li>
+            {% endif %}
+
+            {% for i in projects.paginator.page_range %}
+                {% if projects.number == i %}
+                <li><a class="active">{{ i }}</a></li>
+                {% elif  i == 1 %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% elif i == 2 %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if projects.paginator.num_pages > 2 and projects.number != projects.paginator.num_pages %}
+            <li><a class="disabled">...</a></li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

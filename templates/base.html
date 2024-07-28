@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.cdnfonts.com/css/mexon" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Kaylan</title>
+</head>
+
+<body>
+    <!-- Header design -->
+    <header>
+        <a class="logo" href="{% url 'home' %}">Kay<span>la</span>n</a>
+        <ul class="navlist">
+            <li><a href="{% url 'home' %}" class="{% if '/' == request.path %}active{% endif %}">Home</a></li>
+            <li><a href="{% url 'projects' %}"
+                    class="{% if current_path == 'projects' or current_path == 'projects_by_category' %}active{% endif %}">Projects</a>
+            </li>
+            <li><a href="{% url 'contact' %}" class="{% if current_path == 'contact' %}active{% endif %}">Contact Me</a>
+            </li>
+        </ul>
+        <div class="bx bx-menu" id="menu-icon">
+        </div>
+    </header>
+
+    <!-- Section Start -->
+    {% block content %}
+    {% endblock %}
+    <!-- Section End -->
+
+    <footer>
+        <div class="last-text">
+            <p>Copyright &copy; 2024 by Kaylan All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+    {% if current_path == 'home' %}
+    <script src="{% static 'js/banner.js' %}" defer></script>
+    {% endif %}
+    {% if current_path == 'projects' or current_path == 'projects_by_category' %}
+    <script src="{% static 'js/card.js' %}" defer></script>
+    {% endif %}
+    {% if current_path == 'project_detail'%}
+    <script src="{% static 'js/detailPage.js' %}" defer></script>
+    {% endif %}
+</body>
+
+</html>
