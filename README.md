@@ -103,15 +103,15 @@ List any prerequisites that need to be installed for your project. For example:
 ## Screenshots
 
 ### Home Page
-![Screenshot1](projectImage/Image-1.png)
-![Screenshot1](projectImage/image-2.png)
+![Screenshot1](projectImages/Image-1.png)
+![Screenshot1](projectImages/image-2.png)
 
 ### Project Page
-![Screenshot1](projectImage/image-3.png)
+![Screenshot1](projectImages/image-3.png)
 
 ### Project Details Page
-![Screenshot1](projectImage/image-4.png)
+![Screenshot1](projectImages/image-4.png)
 
 ### Contact Page
-![Screenshot1](projectImage/image-5.png)
+![Screenshot1](projectImages/image-5.png)
 
