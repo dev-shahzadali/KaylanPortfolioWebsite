@@ -1,6 +1,6 @@
 # Django Dynamic Portolio Website
 
-This is a dynamic website built using Python and the Django framework. The website features a homepage, a project page, and a contact page. It is designed to be easily managed through the Django admin interface.
+This is a dynamic website built using Python and the Django framework. The website features a homepage, a project page, and a contact page. It is designed to be easily managed through the Django admin interface. The main purpose of the website is to showcase projects completed by owner.
 
 ## Language and Framework
 
